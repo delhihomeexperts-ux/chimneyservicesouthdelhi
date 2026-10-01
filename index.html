@@ -6,6 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Chimney Service South Delhi - 30 Min Expert Visit</title>
 <meta name="description" id="metaDesc" content="Chimney Service South Delhi - Deep Cleaning, Noise Fix, Not Working Repair - 30 Min Visit">
+<link rel="canonical" href="https://chimneyservicesouthdelhi.vercel.app/">
+<meta name="robots" content="index, follow">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,-apple-system,sans-serif}
 body{background:#fff;color:#111;line-height:1.5}
@@ -110,7 +112,7 @@ if(isHomePage){
   data=brandContent["generic"];
 } else {
   if(!m){ rawBrand="generic"; rawArea="south-delhi"; } else { rawBrand=m[1]; rawArea=m[2]; }
-  if(!brandContent[rawBrand]) rawBrand="bosch";
+  if(!brandContent[rawBrand]) rawBrand="generic";
   brand=rawBrand.charAt(0).toUpperCase()+rawBrand.slice(1); if(rawBrand==="generic") brand="Chimney";
   brandUpper=rawBrand.toUpperCase(); if(rawBrand==="generic") brandUpper="CHIMNEY";
   area=areaMap[rawArea]||rawArea.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
@@ -154,15 +156,15 @@ let repT=document.getElementById('repairTitle');if(repT) repT.innerText= isHomeP
 let repC1=document.getElementById('repairCard1');if(repC1) repC1.innerText= isHomePage? "Chimney Check-up - All Brands - Expert" : brand+" Chimney Check-up in "+area+" - Expert";
 fill('deepPara',data.deep);fill('noisePara',data.noise);fill('notworkPara',data.notwork);fill('modelPara',data.models);
 if(isHomePage){
-  document.getElementById('deepTitle').innerText="Deep Cleaning - All Brands - 100 Lines Expert";
-  document.getElementById('noiseTitle').innerText="Chimney Noise - All Brands - 100 Lines Fix";
-  document.getElementById('notworkTitle').innerText="Chimney Not Working - All Brands - 100 Lines Repair";
-  document.getElementById('modelTitle').innerText="Chimney Models - All Brands - Top to Basic 500 Lines";
+  document.getElementById('deepTitle').innerText="Deep Cleaning - All Brands - Expert Process";
+  document.getElementById('noiseTitle').innerText="Chimney Noise - All Brands - Fix at Home";
+  document.getElementById('notworkTitle').innerText="Chimney Not Working - All Brands - Dead Repair";
+  document.getElementById('modelTitle').innerText="Chimney Models - All Brands - Top to Basic";
 } else {
-  document.getElementById('deepTitle').innerText=brand+" Deep Cleaning in "+area+" - 100 Lines Expert";
-  document.getElementById('noiseTitle').innerText=brand+" Chimney Noise in "+area+" - 100 Lines Fix";
-  document.getElementById('notworkTitle').innerText=brand+" Chimney Not Working in "+area+" - 100 Lines Repair";
-  document.getElementById('modelTitle').innerText=brand+" Chimney Models in "+area+" - Top to Basic 500 Lines";
+  document.getElementById('deepTitle').innerText=brand+" Deep Cleaning in "+area+" - Expert Process";
+  document.getElementById('noiseTitle').innerText=brand+" Chimney Noise in "+area+" - Fix at Home";
+  document.getElementById('notworkTitle').innerText=brand+" Chimney Not Working in "+area+" - Dead Repair";
+  document.getElementById('modelTitle').innerText=brand+" Chimney Models in "+area+" - Top to Basic";
 }
 let relatedBox=document.getElementById('relatedLinks');if(relatedBox){let allAreas=["cr-park","gk1","saket","defence-colony","vasant-kunj","lajpat-nagar","malviya-nagar","kalkaji","nehru-place","govindpuri"];let allBrands=["siemens","hafele","bosch","faber","kaff","elica","hindware"];let links=[];if(isHomePage){allBrands.forEach(b=>{links.push(`<a href="/${b}-chimney-service-in-cr-park/">${b.charAt(0).toUpperCase()+b.slice(1)} Service</a>`) });allAreas.forEach(a=>{if(links.length<6) links.push(`<a href="/bosch-chimney-service-in-${a}/">Chimney ${a.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</a>`) });}else{allBrands.forEach(b=>{if(b!=rawBrand) links.push(`<a href="/${b}-chimney-service-in-${rawArea}/">${b.charAt(0).toUpperCase()+b.slice(1)} ${area}</a>`) });allAreas.forEach(a=>{if(a!=rawArea && links.length<6) links.push(`<a href="/${rawBrand}-chimney-service-in-${a}/">${brand} ${a.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</a>`) });}relatedBox.innerHTML=links.slice(0,6).join('');}
 let mapFrame=document.getElementById('mapFrame');if(mapFrame){if(isHomePage){mapFrame.src=`https://www.google.com/maps?q=South%20Delhi&z=12&output=embed`;} else {mapFrame.src=`https://www.google.com/maps?q=${encodeURIComponent(area+" "+landmark+" South Delhi")}&z=14&output=embed`;}}
