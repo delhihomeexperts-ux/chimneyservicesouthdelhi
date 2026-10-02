@@ -30,7 +30,9 @@ body{background:#fff;color:#111;line-height:1.5}
 .dot-nav{display:flex;gap:6px;margin-top:12px}.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.35)}.dot.active{background:#ff385c;width:16px;border-radius:10px}
 .tabs{padding:0 16px;display:flex;gap:20px;border-bottom:1px solid #eee;background:#fff;position:sticky;top:68px;z-index:90}
 .tab{padding:14px 0;font-size:15px;font-weight:700;border-bottom:2px solid transparent;color:#666;cursor:pointer}.tab.active{border-bottom-color:#111;color:#111}
-.sec-title{padding:18px 16px 10px;font-size:18px;font-weight:800;background:#fafafa;border-top:1px solid #f0f0f0;display:flex;flex-wrap:wrap;gap:6px;overflow:hidden}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.sec-title{padding:18px 16px 10px;font-size:18px;font-weight:800;background:#fafafa;border-top:1px solid #f0f0f0;display:flex;flex-wrap:wrap;gap:6px;overflow:hidden;min-height:48px}
 .card{background:#fff;margin:0 12px 12px;border:1px solid #eee;border-radius:12px;padding:16px}.card h3{font-size:16px;font-weight:800}.meta{font-size:13px;color:#666;margin-top:3px}
 .add{border:1.5px solid #ff385c;color:#ff385c;background:#fff;padding:8px 18px;border-radius:8px;font-weight:800;font-size:14px;float:right;margin-top:10px;cursor:pointer}
 .feat{margin-top:12px;clear:both}.feat li{font-size:14px;color:#333;margin:5px 0;list-style:none;display:flex;gap:8px}.feat li:before{content:"✓";color:#22c55e;font-weight:900}
@@ -55,17 +57,12 @@ body{background:#fff;color:#111;line-height:1.5}
 @keyframes shakeBtn{0%,100%{transform:translateX(0)}15%{transform:translateX(-3px)}30%{transform:translateX(3px)}45%{transform:translateX(-2px)}60%{transform:translateX(2px)}}
 .book-shake{animation:shakeBtn 1.8s infinite;background:#ff385c!important;color:#fff!important}
 .hide-num{filter:blur(5px); user-select:none;}
-/* PROFESSIONAL FALLING ANIMATION */
 @keyframes logoPop{0%{transform:scale(0) rotate(-90deg)}100%{transform:scale(1) rotate(0)}}
 @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-@keyframes wordFall{
-  0%{transform:translateY(-90px) rotateX(-90deg) scale(0.4);opacity:0;filter:blur(12px)}
-  60%{transform:translateY(10px) rotateX(15deg) scale(1.12);opacity:1;filter:blur(0)}
-  80%{transform:translateY(-4px)}
-  100%{transform:translateY(0) rotateX(0) scale(1);opacity:1}
-}
-.fall-word{ display:inline-block; opacity:0; animation:wordFall 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; margin-right:6px; }
-.welcome-fall{ display:inline-block; opacity:0; animation:wordFall 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; margin-right:7px; color:#ff385c; }
+@keyframes wordFall{0%{transform:translateY(-80px) rotateX(-90deg) scale(0.4);opacity:0;filter:blur(10px)}60%{transform:translateY(10px) rotateX(15deg) scale(1.1);opacity:1;filter:blur(0)}80%{transform:translateY(-4px)}100%{transform:translateY(0) rotateX(0) scale(1);opacity:1}}
+.fall-word{display:inline-block;opacity:0;animation:wordFall 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;margin-right:6px}
+.welcome-fall{display:inline-block;opacity:0;animation:wordFall 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;margin-right:7px;color:#ff385c}
+#hideSpamLine{display:none!important;}
 </style>
 </head>
 <body>
@@ -78,10 +75,10 @@ body{background:#fff;color:#111;line-height:1.5}
 <div class="header"><div class="logo-icon" id="headerIcon">C</div><div class="logo"><span id="logoBrand">CHIMNEY CARE</span><span id="areaTop">SOUTH DELHI</span></div><div style="margin-left:auto;background:#22c55e;color:#fff;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:800">● 30 MIN</div></div>
 <div class="hero"><div class="hero-slides"><img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=600&h=400&fit=crop" class="active"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&h=400&fit=crop"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop"></div><div class="hero-overlay"></div><div class="hero-content"><h1 id="h1Text"><span class="red-brand">CHIMNEY </span><span class="white-line">Service in</span><span class="area-line">South Delhi - All Brands</span></h1><div class="sub"><span class="badge">★ 4.6 335 reviews</span><span class="green">✓ 30 Min Visit</span><span class="green">✓ HomeDoor</span></div><div class="dot-nav"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div></div>
 <div class="tabs"><div class="tab active" onclick="switchTab('service',this)">Service</div><div class="tab" onclick="switchTab('repair',this)">Repair</div><div class="tab" onclick="switchTab('installation',this)">Installation</div></div>
-<div id="service" class="tab-content active"><div class="sec-title" id="secService">Hindware Chimney Service in Saket</div><div class="card"><h3 id="card1Title">Deep Chimney Service - 30 Min Visit</h3><div class="meta">★ 4.6 (59 reviews) • 1 hr 15 mins • Expert</div><ul class="feat"><li>Full internal clean - blower, filters & grease trap deep cleaned with chemical</li><li>Suction tested + 90-day warranty + Doorstep Service</li></ul><button class="add" onclick="scrollToForm()">Book Now</button><div style="clear:both"></div></div><div class="card"><h3 id="card2Title">Basic Chimney Service - Expert Clean</h3><div class="meta">★ 4.5 (70 reviews) • 60 mins • Doorstep</div><ul class="feat"><li>Removes grease & oil buildup, restores suction - All brands service</li></ul><button class="add" onclick="scrollToForm()">Book Now</button><div style="clear:both"></div></div></div>
+<div id="service" class="tab-content active"><div class="sec-title" id="secService"></div><div class="card"><h3 id="card1Title">Deep Chimney Service - 30 Min Visit</h3><div class="meta">★ 4.6 (59 reviews) • 1 hr 15 mins • Expert</div><ul class="feat"><li>Full internal clean - blower, filters & grease trap deep cleaned with chemical</li><li>Suction tested + 90-day warranty + Doorstep Service</li></ul><button class="add" onclick="scrollToForm()">Book Now</button><div style="clear:both"></div></div><div class="card"><h3 id="card2Title">Basic Chimney Service - Expert Clean</h3><div class="meta">★ 4.5 (70 reviews) • 60 mins • Doorstep</div><ul class="feat"><li>Removes grease & oil buildup, restores suction - All brands service</li></ul><button class="add" onclick="scrollToForm()">Book Now</button><div style="clear:both"></div></div></div>
 <div id="repair" class="tab-content"><div class="sec-title" id="repairTitle">Chimney Repair - 30 Min Visit</div><div class="card"><h3 id="repairCard1">Chimney Check-up - Expert Technician</h3><div class="meta">★ 4.5 (75 reviews) • 60 mins</div><ul class="feat"><li>Accurate diagnosis of suction, motor or noise issues</li></ul><button class="add" onclick="scrollToForm()">Book Now</button><div style="clear:both"></div></div><div class="card"><h3 id="repairCard2">Chimney Motor Repair - South Delhi</h3><div class="meta">★ 4.7 (82 reviews) • 90 mins</div><ul class="feat"><li>Motor noise, speed issue fixed at home - Genuine parts + warranty</li></ul><button class="add" onclick="scrollToForm()">Book Now</button><div style="clear:both"></div></div></div>
 <div id="installation" class="tab-content"><div class="sec-title">Installation / Uninstallation - Doorstep</div><div class="card"><h3>Chimney Installation - Doorstep</h3><div class="meta">★ 4.6 (67 reviews) • 1 hr 30 mins</div><ul class="feat"><li>Safe, secure chimney setup with ducting - 30-day service warranty</li></ul><button class="add" onclick="scrollToForm()">Book Now</button><div style="clear:both"></div></div></div>
-<div class="permanent-form" id="bookingForm"><h2>📋 Book Expert Technician - 30 Min Visit Doorstep</h2><p style="font-size:12px;color:#666;margin:6px 0 14px">✅ 90-Day Warranty • ⭐ 4.6 (335 reviews) • 📍 All South Delhi 90+ Areas • 🔧 All Brands</p><div class="form-group"><label>Your Name</label><input type="text" id="pName" placeholder="Enter your full name"></div><div class="form-group"><label>Mobile Number</label><input type="tel" id="pPhone" placeholder="Enter 10 digit mobile number"></div><div class="form-group"><label>Service Needed</label><select id="pService"><option>Deep Chimney Service - 30 Min Visit</option><option>Basic Chimney Service - Expert</option><option>Chimney Check-up - Doorstep</option><option>Chimney Noise Repair - 30 Min</option><option>Chimney Not Working - Dead Repair</option><option>Chimney Motor Repair</option><option>Chimney Installation</option></select></div><div class="form-group"><label>Area in South Delhi - All Areas (90+)</label><select id="pArea"><option>GK-1</option><option>GK-2</option><option>Lajpat Nagar</option><option>Saket</option><option>Vasant Kunj</option><option>Defence Colony</option><option>Malviya Nagar</option><option>Hauz Khas</option><option>Green Park</option><option>Greater Kailash</option><option>Kalkaji</option><option>CR Park</option><option>Panchsheel Park</option><option>Shahpur Jat</option></select></div><div class="form-group"><label>Full Address *</label><textarea id="pAddress" placeholder="House No, Street, Block, Area - Eg: C-123, CR Park, Near Market No 2" rows="3" required></textarea></div><button class="book-btn" onclick="submitBooking()">📲 Book Now - 30 Min Visit Doorstep →</button><a href="tel:8796284796" class="call-now-btn">📞 Call Now - Expert Technician <span class="hide-num">8796284796</span></a><p style="font-size:11px;color:#777;text-align:center;margin-top:10px">🔒 No spam • Technician will call in 2 minutes • Free cancellation</p></div>
+<div class="permanent-form" id="bookingForm"><h2>📋 Book Expert Technician - 30 Min Visit Doorstep</h2><p style="font-size:12px;color:#666;margin:6px 0 14px">✅ 90-Day Warranty • ⭐ 4.6 (335 reviews) • 📍 All South Delhi 90+ Areas • 🔧 All Brands</p><div class="form-group"><label>Your Name</label><input type="text" id="pName" placeholder="Enter your full name"></div><div class="form-group"><label>Mobile Number</label><input type="tel" id="pPhone" placeholder="Enter 10 digit mobile number"></div><div class="form-group"><label>Service Needed</label><select id="pService"><option>Deep Chimney Service - 30 Min Visit</option><option>Basic Chimney Service - Expert</option><option>Chimney Check-up - Doorstep</option><option>Chimney Noise Repair - 30 Min</option><option>Chimney Not Working - Dead Repair</option><option>Chimney Motor Repair</option><option>Chimney Installation</option></select></div><div class="form-group"><label>Area in South Delhi - All Areas (90+)</label><select id="pArea"><option>GK-1</option><option>GK-2</option><option>Lajpat Nagar</option><option>Saket</option><option>Vasant Kunj</option><option>Defence Colony</option><option>Malviya Nagar</option><option>Hauz Khas</option><option>Green Park</option><option>Greater Kailash</option><option>Kalkaji</option><option>CR Park</option><option>Panchsheel Park</option><option>Shahpur Jat</option></select></div><div class="form-group"><label>Full Address *</label><textarea id="pAddress" placeholder="House No, Street, Block, Area - Eg: C-123, CR Park, Near Market No 2" rows="3" required></textarea></div><button class="book-btn" onclick="submitBooking()">📲 Book Now - 30 Min Visit Doorstep →</button><a href="tel:8796284796" class="call-now-btn">📞 Call Now - Expert Technician <span class="hide-num">8796284796</span></a><p id="hideSpamLine" style="font-size:11px;color:#777;text-align:center;margin-top:10px">🔒 No spam • Technician will call in 2 minutes • Free cancellation</p></div>
 <div class="long-sec"><h2 id="deepTitle">Deep Cleaning - Expert Process</h2><p id="deepPara">Loading...</p></div>
 <div class="long-sec"><h2 id="noiseTitle">Chimney Noise - Fix at Home</h2><p id="noisePara">Loading...</p></div>
 <div class="long-sec"><h2 id="notworkTitle">Chimney Not Working - Dead Repair</h2><p id="notworkPara">Loading...</p></div>
@@ -99,19 +96,64 @@ body{background:#fff;color:#111;line-height:1.5}
 <div class="popup-overlay" id="callPopup"><div class="popup-box"><div class="popup-close" onclick="closePopup()">×</div><div style="font-size:36px">📞</div><h3 style="font-size:18px;font-weight:800;margin-top:8px">Need Chimney Service?</h3><p style="font-size:13px;color:#555;margin:8px 0 14px">Expert will visit in <strong>30 Min - Doorstep</strong>. 4.6★ Rated - 335 Reviews!</p><a href="tel:8796284796" style="display:block;background:#111;color:#fff;padding:12px;border-radius:10px;text-decoration:none;font-weight:800">📞 Call Now - 30 Min Visit</a><a href="https://wa.me/918796284796" style="display:block;background:#22c55e;color:#fff;padding:12px;border-radius:10px;text-decoration:none;font-weight:800;margin-top:8px">💬 WhatsApp Us</a><div style="font-size:11px;color:#888;margin-top:10px;cursor:pointer" onclick="closePopup()">Continue Browsing →</div></div></div>
 <div class="sticky"><a href="tel:8796284796" class="call call-stable">📞 Call Now</a><a href="javascript:scrollToForm()" class="book-shake">📋 Book Now</a></div>
 <script>
-function switchTab(id,el){document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active');el.classList.add('active');}
+function switchTab(id,el){
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
 function scrollToForm(){document.getElementById('bookingForm').scrollIntoView({behavior:'smooth'})}
 function submitBooking(){const name=document.getElementById('pName').value||'Customer';const phone=document.getElementById('pPhone').value||'';const service=document.getElementById('pService').value;const area=document.getElementById('pArea').value;const address=document.getElementById('pAddress').value||'';const msg=`Hi!%0AName: ${name}%0APhone: ${phone}%0AService: ${service}%0AArea: ${area}%0AAddress: ${address}%0A30 Min Visit`;window.location.href=`https://wa.me/918796284796?text=${msg}`;}
 function closePopup(){document.getElementById('callPopup').classList.remove('show');localStorage.setItem('popupShown','1');}
 const brandContent = {
-"generic": {"deep": "Chimney deep cleaning in {area}: All brands deep cleaned with chemical wash. Oil collector jams fast due to Indian tadka. Baffle chemical dip 20 min. Suction drops 60% when choked, we restore to 1200 m3/hr. Includes oil collector empty, filter wash, blower wash, motor greasing. Call ••••••••••. Service every 3 months.", "noise": "Chimney noise fix in {area}: bearing dry, impeller unbalanced, clamp loose. Rattling when duct touches false ceiling - rubber padding fix. Silent test below 58db. Warranty 90 days. Call ••••••••••.", "notwork": "Chimney not working in {area}: plug burnt, PCB fuse blown, touch locked due to moisture. Diagnose in 10 min. 80% fixed same day. Call ••••••••••. Warranty 90 days.", "models": "All chimney models in {area}: 60cm pyramid, 90cm wall mount, island, filterless, baffle, charcoal. Filter wash monthly, oil collector empty 10 days. Call ••••••••••."},
-"siemens": {"deep": "Deep cleaning in {area} for this brand type: iQdrive motor needs special care. We open blower housing and remove carbonized oil from impeller. Baffle filter chemical dip 20 min. Oil collector tray causes E3 error if jammed. Suction restores to 1200 m3/hr. 90-day warranty in {area}. Call ••••••••••.", "noise": "Noise fix in {area}: bearing dry or impeller unbalanced due to grease. Speed 1 means bearing issue, speed 3 means impeller. Tighten screws, rubber padding fix. Silent test below 54db. Warranty 90 days. Call ••••••••••.", "notwork": "Not working fix in {area}: plug burnt or PCB fuse blown. Check voltage 230V. After power cut capacitor may fail. 80% fixed same day. Call ••••••••••. Warranty 90 days.", "models": "Models in {area}: LC98BD542 90cm 1200, LF98BID50 island, LC97AFM60B filterless. Most common is LC98BD542. Filter wash monthly, oil collector empty every 10 days. Call •••••••••• for booking."},
-"hafele": {"deep": "Deep cleaning in {area} for this brand type: Datura Altius BLDC needs oil collector cleaning. Collector small jams fast. Suction drops from 1350 to 400 when choked. Restore full suction. Auto-clean thermal heater coil cleaning in {area}. Time 80 min with bill. Call ••••••••••.", "noise": "Noise fix in {area}: BLDC dust fan touches oil tray when full. Bearing gone needs replacement. Silent below 52db after fix. Warranty 90 days. Call ••••••••••.", "notwork": "Not working in {area}: touch lock panel - hold L for 3 sec to unlock. Fuse or PCB fails due to voltage fluctuation. Display blinking means oil collector full sensor - empty and reset. 90% fixed same day. Call ••••••••••.", "models": "Models: Datura Neo 90cm 1200 filterless, Altius 90cm BLDC 1400, Titan 60cm. Most sold is Datura Neo. Filter 1200, oil collector 600. Call ••••••••••."},
-"bosch": {"deep": "Deep cleaning in {area} for this brand type: EcoSilence motor DWB098J50 90cm common. Oil trap small clean every service. Filter single baffle. Suction 800 needs full blower clean. Includes motor greasing. Call ••••••••••. 90-day warranty.", "noise": "Noise fix in {area}: bearing loose in blower. Blower unbalanced due to oil on one side. Clamp not tight - replace with metal clamp. Silent test below 54db. Call ••••••••••.", "notwork": "Not working in {area}: voltage fluctuation causes display dead. Touch lock hold power 5 sec. Fan not rotating means capacitor or motor jam. 85% fixed same day. Call ••••••••••.", "models": "Models in {area}: DWB098J50 90cm 800 most common, DWB098A50 auto-clean, DWI063A50 island. Filter 1300, oil tray 700. Call ••••••••••."},
-"faber": {"deep": "Deep cleaning in {area} for this brand type: PLUTO 90cm SUNNY 60cm common. Blower heavy grease due to Indian oil. Baffle double layer clean both sides chemical dip 25 min. Suction 1200-1500 drops fast, restore full. Time 70 min. Call ••••••••••.", "noise": "Noise in {area}: very common in PLUTO model speed 3 - blower unbalanced. SUNNY noise speed 1 - bearing dry. Vibration due to wall plug loose - metal anchor fix. Warranty 90 days. Call ••••••••••.", "notwork": "Not working in {area}: daily call for dead fuse or PCB. Touch lock - hold power 3 sec. 90% fixed same day. Call ••••••••••.", "models": "Models: PLUTO PB BF 90cm 1200, SUNNY 60cm 1000, FEEL 3D 90cm 1500. Most common PLUTO. Call ••••••••••."},
-"kaff": {"deep": "Deep cleaning in {area} for this brand type: powerful motor 1300 but oil collector small. ALICE 90cm RAY 60cm common. Blower oil thick. Baffle chemical dip 20 min. Suction drops 50% when choked. Time 75 min. Call ••••••••••.", "noise": "Noise in {area}: blower unbalanced bearing. ALICE noise speed 3, RAY noise speed 1. Rattling filter lock broken. Silent below 58db after fix. Call ••••••••••.", "notwork": "Not working in {area}: fuse or PCB issue, touch lock hold power 3 sec. Display ON fan OFF means motor jam or capacitor. 90% fixed same day. Call ••••••••••.", "models": "Models: ALICE DHC 90cm 1300 most common, RAY 60cm, NOBELO 90cm filterless. Call •••••••••• for booking."},
-"elica": {"deep": "Deep cleaning in {area} for this brand type: EDS3 auto-clean model WDFL 906 HAC common. Filter 3 layer baffle clean each layer chemical dip 20 min. Suction 1200 drops when charcoal choked. Time 80 min. Call ••••••••••.", "noise": "Noise in {area}: blower unbalanced bearing. WDFL noise speed 3, FL noise speed 1. Vibration wall plug loose. Silent below 56db after fix. Call ••••••••••.", "notwork": "Not working in {area}: fuse or PCB, touch lock hold power 3 sec. Display ON fan OFF motor jam. 90% fixed same day. Call ••••••••••.", "models": "Models: WDFL 906 HAC 90cm 1200 most common, FL 600 60cm, SPOT H4 island. Filter 1200, charcoal 1800. Call ••••••••••."},
-"hindware": {"deep": "Deep cleaning in {area} for this brand type: metallic blower high speed CLEO 90cm NEO 60cm common. Blower heavy oil high RPM. Baffle single layer thick chemical dip 30 min. Time 70 min. Call ••••••••••.", "noise": "Noise in {area}: high RPM motor CLEO noise speed 3 blower unbalanced, NEO noise speed 1 bearing dry. High noise 75db bearing gone replace. Call ••••••••••.", "notwork": "Not working in {area}: fuse PCB touch lock hold power 3 sec. Display ON fan OFF motor jam. 90% fixed same day. Call ••••••••••.", "models": "Models: CLEO 90cm 1200 auto-clean most common, NEO 60cm 1000. Call ••••••••••."}
+"generic": {
+"deep": "Deep cleaning service in {area}: Chimney blower and baffle filters get heavy oil due to Indian cooking. We do chemical dip for 20 mins, clean oil collector and test suction up to 1200 m3/hr. Time 75 mins with 90-day warranty.",
+"noise": "Noise issue in {area}: Common reason is dry bearing or unbalanced blower. We fix with greasing, clamp tightening and rubber padding. Final sound test below 58 db.",
+"notwork": "Not working issue in {area}: Usually fuse blown or touch panel locked. We check voltage and PCB in 10 mins. 80% cases fixed same day at home.",
+"models": "Common models in {area}: 60cm pyramid, 90cm wall mount, island and filterless type. We service all types with genuine parts."
+},
+"hindware": {
+"deep": "Deep cleaning in {area} for this type: Metallic blower with high RPM collects thick oil. We clean blower, single baffle filter with chemical dip for 30 mins and empty oil tray. Suction restored. 90-day warranty.",
+"noise": "Noise in {area}: High RPM model makes sound on speed 3 due to unbalanced blower, speed 1 due to dry bearing. We replace bearing if needed and fix vibration with anchor.",
+"notwork": "Dead chimney in {area}: Check touch lock, hold power 3 sec to unlock. If display on but fan off, motor jam or capacitor issue. Most fixed same day.",
+"models": "Popular type in {area}: CLEO 90cm auto-clean and NEO 60cm. We have filters and oil trays available for quick service."
+},
+"siemens": {
+"deep": "Deep cleaning in {area}: iQdrive motor needs careful blower opening. We remove carbon oil from impeller and clean oil collector tray to avoid E3 error. Time 75 mins.",
+"noise": "Noise fix in {area}: Bearing dry or grease imbalance. Speed 1 is bearing, speed 3 is impeller. We tighten and add rubber padding. Below 54db after fix.",
+"notwork": "Dead issue in {area}: Check plug and PCB fuse. After power cut capacitor may fail. 80% same day repair with warranty.",
+"models": "Models: 90cm 1200 suction and island type. Common is 90cm wall mount. Monthly filter wash recommended."
+},
+"hafele": {
+"deep": "Deep cleaning in {area}: Small oil collector jams fast. Suction drops from 1350 to 400 when choked. We clean collector and thermal auto-clean coil. 80 mins with bill.",
+"noise": "Noise in {area}: BLDC fan touches oil tray when full. We clean tray and check bearing. Silent below 52db after service.",
+"notwork": "Not working in {area}: Touch panel L lock, hold 3 sec to unlock. Display blinking means full sensor, empty tray and reset. 90% same day fixed.",
+"models": "Types: Datura Neo 90cm filterless and Altius BLDC 1400. Most sold is Neo series with good suction."
+},
+"bosch": {
+"deep": "Deep cleaning in {area}: EcoSilence motor with small oil trap. We clean single baffle filter and do motor greasing. Suction 800 restored after full blower wash.",
+"noise": "Noise in {area}: Loose bearing in blower or oil on one side. We replace metal clamp and balance blower. Test below 54db.",
+"notwork": "Dead issue: Voltage fluctuation causes display dead. Hold power 5 sec to unlock. If fan not rotating, capacitor or motor jam. 85% same day fix.",
+"models": "Models: 90cm 800 suction most common and island type. Filters available at service."
+},
+"faber": {
+"deep": "Deep cleaning in {area}: PLUTO and SUNNY models have heavy grease. Double baffle cleaned both sides with 25 min chemical dip. Time 70 mins, suction 1200-1500 restored.",
+"noise": "Noise: Very common on speed 3 due to unbalanced blower. Speed 1 bearing dry. Vibration due to loose wall plug, we fix with metal anchor.",
+"notwork": "Dead: Daily call for fuse or PCB issue. Hold power 3 sec to unlock touch. 90% fixed same day at home.",
+"models": "Models: PLUTO 90cm 1200, SUNNY 60cm 1000, FEEL 3D 1500. Most common is PLUTO series."
+},
+"kaff": {
+"deep": "Deep cleaning in {area}: Powerful 1300 motor but small collector. ALICE 90cm and RAY 60cm have thick oil. Baffle dip 20 mins. Time 75 mins.",
+"noise": "Noise: Blower unbalanced or bearing issue. ALICE on speed 3, RAY on speed 1. Rattling due to broken filter lock, we replace lock.",
+"notwork": "Not working: Fuse or PCB, touch lock hold 3 sec. Display ON fan OFF means motor jam or capacitor. 90% same day fix.",
+"models": "Models: ALICE 90cm 1300 most common, RAY 60cm, NOBELO filterless. All parts available."
+},
+"elica": {
+"deep": "Deep cleaning in {area}: EDS3 auto-clean type with 3 layer baffle. Each layer chemical dip 20 mins. Suction 1200 drops when charcoal choked. 80 mins service.",
+"noise": "Noise: Blower unbalanced bearing. Common on speed 3 and speed 1 models. Wall plug loose causes vibration, we fix with anchor.",
+"notwork": "Dead: Fuse or PCB, touch lock hold 3 sec. Display ON fan OFF motor jam. 90% fixed same day with warranty.",
+"models": "Models: 90cm 1200 HAC most common, 60cm and island type. Filter 1200, charcoal 1800."
+}
 };
 (function(){
 const areaMap={"cr-park":"CR Park","gk1":"GK-1","gk-1":"GK-1","gk2":"GK-2","saket":"Saket","defence-colony":"Defence Colony","vasant-kunj":"Vasant Kunj","lajpat-nagar":"Lajpat Nagar","malviya-nagar":"Malviya Nagar","kalkaji":"Kalkaji","nehru-place":"Nehru Place","govindpuri":"Govindpuri"};
@@ -136,7 +178,18 @@ if(isHomePage){
 }
 function fill(id,t){let el=document.getElementById(id);if(el) el.innerText=t.replaceAll("{area}",area).replaceAll("{brand}",brand);}
 
-// WELCOME SCREEN - FALLING
+function animateFallingHeading(el, text){
+  if(!el) return;
+  el.innerHTML = "";
+  const words = text.split(" ");
+  words.forEach((word, i)=>{
+    let span = document.createElement('span');
+    span.className = "fall-word";
+    span.innerText = word;
+    span.style.animationDelay = `${i*0.2}s`;
+    el.appendChild(span);
+  });
+}
 let welcomeScreen=document.getElementById('welcomeScreen');
 let typeEl=document.getElementById('typewriter');
 let iconEl=document.getElementById('welcomeIcon');
@@ -151,6 +204,7 @@ if(welcomeScreen && typeEl){
     l1.style.opacity="0"; l1.style.animation="fadeIn 0.6s ease forwards";
     l1.innerText="Welcome to";
     typeEl.appendChild(l1);
+    // === WELCOME ME 1 BRAND JODA - TOTAL 7 ME COUNT HOGA ===
     let words = isHomePage? ["Chimney","Service","Expert"] : [brand,"Chimney","Service","in",area,"Expert"];
     let l2=document.createElement('div');
     l2.style.marginTop="8px"; l2.style.display="flex"; l2.style.flexWrap="wrap"; l2.style.justifyContent="center";
@@ -163,34 +217,22 @@ if(welcomeScreen && typeEl){
         if(w==="in"){ s.style.color="#fff"; s.style.fontWeight="500"; }
         if(w==="Expert"){ s.style.color="#fff"; s.style.width="100%"; s.style.display="block"; s.style.marginTop="6px"; }
         l2.appendChild(s);
-      }, 500 + i*300);
+      }, 500 + i*280);
     });
     setTimeout(()=>{
       welcomeScreen.style.transition='opacity 0.6s ease, transform 0.6s ease';
       welcomeScreen.style.opacity='0'; welcomeScreen.style.transform='scale(1.08)';
-      setTimeout(()=>welcomeScreen.style.display='none',650);
-    }, 3000 + words.length*300);
+      setTimeout(()=>{
+        welcomeScreen.style.display='none';
+        let secServiceEl = document.getElementById('secService');
+        if(secServiceEl){
+          let headingText = isHomePage? "Chimney Service in South Delhi" : brand+" Chimney Service in "+area;
+          animateFallingHeading(secServiceEl, headingText);
+        }
+      },650);
+    }, 3000 + words.length*280);
   }
   showWelcome();
-}
-
-// === MAIN FIX: Hindware Chimney Service in Saket - FALLING ANIMATION ===
-function animateFallingHeading(el, text){
-  if(!el) return;
-  el.innerHTML = "";
-  const words = text.split(" ");
-  words.forEach((word, i)=>{
-    let span = document.createElement('span');
-    span.className = "fall-word";
-    span.innerText = word;
-    span.style.animationDelay = `${i*0.18}s`;
-    el.appendChild(span);
-  });
-}
-let secServiceEl = document.getElementById('secService');
-if(secServiceEl){
-  let headingText = isHomePage? "Chimney Service in South Delhi - All Brands" : brand+" Chimney Service in "+area;
-  setTimeout(()=> animateFallingHeading(secServiceEl, headingText), 3800);
 }
 
 let h1=document.getElementById('h1Text');
@@ -201,33 +243,44 @@ function getTitles(){
   return [`<span class="red-brand">${brandUpper} </span><span class="white-line">Chimney Service in</span><span class="area-line">${area} - ${landmark}</span>`,`<span class="red-brand">CHIMNEY </span><span class="white-line">Deep Cleaning in</span><span class="area-line">${area} - Blower & Filter</span>`,`<span class="red-brand">CHIMNEY </span><span class="white-line">Noise Fix in</span><span class="area-line">${area} - Silent Motor</span>`];
 }
 let titles=getTitles();let current=0;if(h1) h1.innerHTML=titles[0];setInterval(()=>{current=(current+1)%titles.length;if(h1) h1.innerHTML=titles[current];document.querySelectorAll('.hero-slides img').forEach((img,i)=>{img.classList.toggle('active',i%4===current%4)});document.querySelectorAll('.dot').forEach((d,i)=>{d.classList.toggle('active',i===current)});},3000);
+
+// === BRAND 7 BAR ONLY LOGIC ===
 if(isHomePage){
   document.title="Chimney Service South Delhi - All Brands - 30 Min Visit";
   let meta=document.getElementById('metaDesc');if(meta) meta.content="Chimney Service in South Delhi - Deep cleaning, noise repair, not working fix - All Brands - 30 Min Visit - All Areas 90+";
-} else {
-  document.title=brand+" Chimney Service in "+area+" - "+landmark+" | 30 Min Visit";
-  let meta=document.getElementById('metaDesc');if(meta) meta.content="Chimney Service in "+area+" - Deep cleaning, noise repair, not working fix in "+landmark+" | 30 Min Visit | Expert for "+brand+" type";
-}
-let logoBrand=document.getElementById('logoBrand');if(logoBrand) logoBrand.innerText= isHomePage? "CHIMNEY CARE" : "CHIMNEY CARE";
-let areaTop=document.getElementById('areaTop');if(areaTop) areaTop.innerText= isHomePage? "SOUTH DELHI" : area.toUpperCase();
-let card1=document.getElementById('card1Title');if(card1) card1.innerText= "Deep Chimney Service - 30 Min Visit";
-let card2=document.getElementById('card2Title');if(card2) card2.innerText= "Basic Service - Expert Clean";
-let bName=document.getElementById('bName');if(bName) bName.innerText= isHomePage? "All Brands" : brand;
-let indBrand=document.getElementById('independentBrand');if(indBrand) indBrand.innerText= isHomePage? "FOR ALL BRANDS - Independent Expert" : "FOR "+brandUpper+" - Independent Expert";
-let repT=document.getElementById('repairTitle');if(repT) repT.innerText= "Chimney Repair in "+area;
-let repC1=document.getElementById('repairCard1');if(repC1) repC1.innerText= "Chimney Check-up - Expert Technician";
-fill('deepPara',data.deep);fill('noisePara',data.noise);fill('notworkPara',data.notwork);fill('modelPara',data.models);
-if(isHomePage){
+  document.getElementById('bName').innerText="All Brands";
+  document.getElementById('independentBrand').innerText="FOR ALL BRANDS - Independent Expert";
   document.getElementById('deepTitle').innerText="Deep Cleaning - All Brands - Expert Process";
   document.getElementById('noiseTitle').innerText="Chimney Noise - All Brands - Fix at Home";
   document.getElementById('notworkTitle').innerText="Chimney Not Working - All Brands - Dead Repair";
   document.getElementById('modelTitle').innerText="Chimney Models - All Brands - Top to Basic";
 } else {
-  document.getElementById('deepTitle').innerText=brand+" Deep Cleaning in "+area+" - Expert Process";
-  document.getElementById('noiseTitle').innerText="Chimney Noise in "+area+" - Fix at Home";
-  document.getElementById('notworkTitle').innerText="Chimney Not Working in "+area+" - Dead Repair";
-  document.getElementById('modelTitle').innerText="Chimney Models in "+area+" - Top to Basic";
+  // Visible 7 count:
+  // 1. Welcome me brand (upar words me)
+  // 2. H1 me brandUpper (hero)
+  // 3. secService me brand (girne wala)
+  // 4. deepTitle me brand
+  // 5. noiseTitle me brand
+  // 6. notworkTitle me brand
+  // 7. bName me brand
+  document.title=brand+" Chimney Service in "+area+" - "+landmark+" | 30 Min Visit";
+  let meta=document.getElementById('metaDesc');if(meta) meta.content="Chimney Service in "+area+" - Deep cleaning, noise repair, not working fix in "+landmark+" | 30 Min Visit";
+  document.getElementById('bName').innerText=brand; // 7th
+  document.getElementById('deepTitle').innerText=brand+" Deep Cleaning in "+area+" - Expert Process"; // 4th
+  document.getElementById('noiseTitle').innerText=brand+" Noise in "+area+" - Fix at Home"; // 5th
+  document.getElementById('notworkTitle').innerText=brand+" Not Working in "+area+" - Dead Repair"; // 6th
+  document.getElementById('modelTitle').innerText="Chimney Models in "+area+" - Top to Basic"; // brand hata diya
+  document.getElementById('independentBrand').innerText="FOR PREMIUM TYPE - Independent Expert"; // brand hata diya
 }
+
+let logoBrand=document.getElementById('logoBrand');if(logoBrand) logoBrand.innerText= "CHIMNEY CARE";
+let areaTop=document.getElementById('areaTop');if(areaTop) areaTop.innerText= isHomePage? "SOUTH DELHI" : area.toUpperCase();
+let card1=document.getElementById('card1Title');if(card1) card1.innerText= "Deep Chimney Service - 30 Min Visit";
+let card2=document.getElementById('card2Title');if(card2) card2.innerText= "Basic Service - Expert Clean";
+let repT=document.getElementById('repairTitle');if(repT) repT.innerText= "Chimney Repair in "+area;
+let repC1=document.getElementById('repairCard1');if(repC1) repC1.innerText= "Chimney Check-up - Expert Technician";
+fill('deepPara',data.deep);fill('noisePara',data.noise);fill('notworkPara',data.notwork);fill('modelPara',data.models);
+
 let relatedBox=document.getElementById('relatedLinks');if(relatedBox){let allAreas=["cr-park","gk1","saket","defence-colony","vasant-kunj","lajpat-nagar","malviya-nagar","kalkaji","nehru-place","govindpuri"];let allBrands=["siemens","hafele","bosch","faber","kaff","elica","hindware"];let links=[];if(isHomePage){allBrands.forEach(b=>{links.push(`<a href="/${b}-chimney-service-in-cr-park/">${b.charAt(0).toUpperCase()+b.slice(1)} Service</a>`) });allAreas.forEach(a=>{if(links.length<6) links.push(`<a href="/bosch-chimney-service-in-${a}/">Chimney ${a.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</a>`) });}else{allBrands.forEach(b=>{if(b!=rawBrand) links.push(`<a href="/${b}-chimney-service-in-${rawArea}/">${b.charAt(0).toUpperCase()+b.slice(1)} ${area}</a>`) });allAreas.forEach(a=>{if(a!=rawArea && links.length<6) links.push(`<a href="/${rawBrand}-chimney-service-in-${a}/">${brand} ${a.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</a>`) });}relatedBox.innerHTML=links.slice(0,6).join('');}
 let mapFrame=document.getElementById('mapFrame');if(mapFrame){if(isHomePage){mapFrame.src=`https://www.google.com/maps?q=South%20Delhi&z=12&output=embed`;} else {mapFrame.src=`https://www.google.com/maps?q=${encodeURIComponent(area+" "+landmark+" South Delhi")}&z=14&output=embed`;}}
 })();
