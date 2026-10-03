@@ -18,7 +18,7 @@ body{background:#fff;color:#111;line-height:1.5}
 .logo-icon{width:52px;height:52px;background:#111;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900;color:#fff}
 #logoBrand{font-size:14px;font-weight:900;letter-spacing:0.5px;color:#111;display:block;line-height:1.2}
 #areaTop{font-size:11px;font-weight:800;color:#ff385c;letter-spacing:0.8px;margin-top:2px;display:block}
-.hero{position:relative;height:340px;overflow:hidden;display:flex;align-items:center;padding:20px 16px;background:#111;contain:layout paint}
+.hero{position:relative;height:340px;overflow:hidden;display:flex;align-items:center;padding:20px 16px;background:#111}
 .hero-slides{position:absolute;inset:0;z-index:0}
 .hero-slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.8s ease}
 .hero-slides img.active{opacity:1}
@@ -32,8 +32,7 @@ body{background:#fff;color:#111;line-height:1.5}
 .dot-nav{display:flex;gap:7px;margin-top:14px}.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.35);transition:all 0.3s}.dot.active{background:#ff385c;width:20px;border-radius:10px}
 .tabs{padding:0 16px;display:flex;gap:20px;border-bottom:1px solid #eee;background:#fff;position:sticky;top:65px;z-index:90}
 .tab{padding:14px 0;font-size:15px;font-weight:700;border-bottom:2.5px solid transparent;color:#666;cursor:pointer}.tab.active{border-bottom-color:#111;color:#111}
-.tab-content{display:none}
-.tab-content.active{display:block;animation:fadeIn 0.25s ease}
+.tab-content{display:none}.tab-content.active{display:block;animation:fadeIn 0.25s ease}
 .sec-title{padding:18px 16px 10px;font-size:19px;font-weight:800;background:#fafafa;border-top:1px solid #f0f0f0;display:flex;flex-wrap:wrap;gap:6px;overflow:hidden;min-height:52px}
 .card{background:#fff;margin:0 12px 12px;border:1px solid #eee;border-radius:14px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,0.04)}.card h3{font-size:16px;font-weight:800}.meta{font-size:13px;color:#666;margin-top:3px}
 .add{border:1.5px solid #ff385c;color:#ff385c;background:#fff;padding:9px 20px;border-radius:9px;font-weight:800;font-size:14px;float:right;margin-top:10px;cursor:pointer}
@@ -50,6 +49,11 @@ body{background:#fff;color:#111;line-height:1.5}
 .footer{background:#111;color:#777;padding:18px 14px;text-align:center;font-size:11px}
 .footer-links{display:flex;gap:12px;justify-content:center;margin-top:8px;flex-wrap:wrap}
 .footer-links a{color:#ff385c;text-decoration:none;font-weight:700;font-size:11px}
+.footer-pages{margin-top:16px;border-top:1px solid #222;padding-top:14px}
+.footer-pages-title{font-size:12px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:0.5px}
+.footer-pages-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;text-align:left}
+.footer-pages-grid a{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:9px 10px;text-decoration:none;color:#ccc;font-size:11px;font-weight:600;display:block;line-height:1.3}
+.footer-pages-grid a span{color:#ff385c;font-size:10px;display:block;margin-top:2px}
 .popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:999;display:none;align-items:center;justify-content:center;padding:20px}.popup-overlay.show{display:flex}
 .popup-box{background:#fff;border-radius:16px;padding:22px;max-width:320px;width:100%;text-align:center;position:relative}
 .popup-close{position:absolute;top:8px;right:12px;font-size:20px;cursor:pointer;font-weight:800}
@@ -61,18 +65,19 @@ body{background:#fff;color:#111;line-height:1.5}
 .hide-num{filter:blur(5px); user-select:none;}
 @keyframes logoPop{0%{transform:scale(0) rotate(-90deg)}100%{transform:scale(1) rotate(0)}}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-@keyframes wordFall{0%{transform:translateY(-30px) scale(0.9);opacity:0}100%{transform:translateY(0) scale(1);opacity:1}}
-.fall-word{display:inline-block;opacity:0;animation:wordFall 0.35s ease forwards;margin-right:7px}
-.welcome-fall{display:inline-block;opacity:0;animation:wordFall 0.35s ease forwards;margin-right:7px;color:#ff385c}
+@keyframes wordFall{0%{transform:translateY(-80px) rotateX(-45deg) scale(0.6);opacity:0;filter:blur(8px)}60%{transform:translateY(10px) rotateX(10deg) scale(1.1);opacity:1;filter:blur(0)}80%{transform:translateY(-4px)}100%{transform:translateY(0) rotateX(0) scale(1);opacity:1}}
+.fall-word{display:inline-block;opacity:0;animation:wordFall 0.65s cubic-bezier(0.34,1.4,0.64,1) forwards;margin-right:7px}
+.welcome-fall{display:inline-block;opacity:0;animation:wordFall 0.65s cubic-bezier(0.34,1.4,0.64,1) forwards;margin-right:7px;color:#ff385c;text-shadow:0 6px 18px rgba(255,56,92,0.3)}
+.welcome-to{font-size:20px;font-weight:500;color:#fff;letter-spacing:1px}
 #hideSpamLine{display:none!important}
 #hideBottomBrand{display:none!important}
 </style>
 </head>
 <body>
 <div id="welcomeScreen" style="position:fixed;inset:0;background:#0a0a0a;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#fff;text-align:center;">
-  <div id="welcomeIcon" style="width:78px;height:78px;background:#ff385c;border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:900;margin-bottom:18px;box-shadow:0 14px 32px rgba(255,56,92,0.45);animation:logoPop 0.5s ease">C</div>
-  <div id="typewriter" style="font-size:24px;font-weight:800;line-height:1.35;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 20px"></div>
-  <div style="font-size:11px;color:#555;margin-top:12px;letter-spacing:1.8px">30 MIN VISIT • EXPERT TECHNICIAN</div>
+  <div id="welcomeIcon" style="width:78px;height:78px;background:#ff385c;border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:900;margin-bottom:18px;box-shadow:0 14px 32px rgba(255,56,92,0.45);animation:logoPop 0.7s cubic-bezier(0.34,1.56,0.64,1)">C</div>
+  <div id="typewriter" style="font-size:24px;font-weight:800;line-height:1.35;min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 20px"></div>
+  <div style="font-size:11px;color:#444;margin-top:18px;letter-spacing:1.8px">30 MIN VISIT • EXPERT TECHNICIAN</div>
 </div>
 <div class="main">
 <div class="header"><div class="logo-icon" id="headerIcon">C</div><div class="logo"><span id="logoBrand">CHIMNEY CARE</span><span id="areaTop">SOUTH DELHI</span></div><div style="margin-left:auto;background:#22c55e;color:#fff;padding:7px 14px;border-radius:20px;font-size:11px;font-weight:800">● 30 MIN</div></div>
@@ -83,12 +88,12 @@ body{background:#fff;color:#111;line-height:1.5}
 <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=480&h=340&fit=crop&q=60&auto=format&fm=webp" width="480" height="340" alt="kitchen chimney cleaning south delhi" loading="lazy" decoding="async">
 <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=480&h=340&fit=crop&q=60&auto=format&fm=webp" width="480" height="340" alt="chimney installation south delhi" loading="lazy" decoding="async">
 <img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=480&h=340&fit=crop&q=60&auto=format&fm=webp" width="480" height="340" alt="chimney not working repair south delhi" loading="lazy" decoding="async">
-</div><div class="hero-overlay"></div><div class="hero-content"><h1 id="h1Text"><span class="red-brand">CHIMNEY </span><span class="white-line">Service in</span><span class="area-line">South Delhi - All Brands</span></h1><div class="sub"><span class="badge">★ 4.6 335 reviews</span><span class="green">✓ 30 Min Visit</span><span class="green">✓ HomeDoor</span></div><div class="dot-nav" aria-hidden="true"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div></div>
-<div class="tabs" role="tablist"><div class="tab active" role="tab" tabindex="0" onclick="switchTab('service',this)">Service</div><div class="tab" role="tab" tabindex="0" onclick="switchTab('repair',this)">Repair</div><div class="tab" role="tab" tabindex="0" onclick="switchTab('installation',this)">Installation</div></div>
+</div><div class="hero-overlay"></div><div class="hero-content"><h1 id="h1Text"><span class="red-brand">CHIMNEY </span><span class="white-line">Service in</span><span class="area-line">South Delhi - All Brands</span></h1><div class="sub"><span class="badge">★ 4.6 335 reviews</span><span class="green">✓ 30 Min Visit</span><span class="green">✓ HomeDoor</span></div><div class="dot-nav"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div></div>
+<div class="tabs"><div class="tab active" onclick="switchTab('service',this)">Service</div><div class="tab" onclick="switchTab('repair',this)">Repair</div><div class="tab" onclick="switchTab('installation',this)">Installation</div></div>
 <div id="service" class="tab-content active"><div class="sec-title" id="secService"></div><div class="card"><h3 id="card1Title">Deep Chimney Service - 30 Min Visit</h3><div class="meta">★ 4.6 (59 reviews) • 1 hr 15 mins • Expert</div><ul class="feat"><li>Full internal clean - blower, filters & grease trap deep cleaned with chemical</li><li>Suction tested + 90-day warranty + Doorstep Service</li></ul><button class="add" onclick="scrollToForm()" type="button">Book Now</button><div style="clear:both"></div></div><div class="card"><h3 id="card2Title">Basic Chimney Service - Expert Clean</h3><div class="meta">★ 4.5 (70 reviews) • 60 mins • Doorstep</div><ul class="feat"><li>Removes grease & oil buildup, restores suction - All brands service</li></ul><button class="add" onclick="scrollToForm()" type="button">Book Now</button><div style="clear:both"></div></div></div>
 <div id="repair" class="tab-content"><div class="sec-title" id="repairTitle">Chimney Repair - 30 Min Visit</div><div class="card"><h3 id="repairCard1">Chimney Check-up - Expert Technician</h3><div class="meta">★ 4.5 (75 reviews) • 60 mins</div><ul class="feat"><li>Accurate diagnosis of suction, motor or noise issues</li></ul><button class="add" onclick="scrollToForm()" type="button">Book Now</button><div style="clear:both"></div></div><div class="card"><h3 id="repairCard2">Chimney Motor Repair - South Delhi</h3><div class="meta">★ 4.7 (82 reviews) • 90 mins</div><ul class="feat"><li>Motor noise, speed issue fixed at home - Genuine parts + warranty</li></ul><button class="add" onclick="scrollToForm()" type="button">Book Now</button><div style="clear:both"></div></div></div>
 <div id="installation" class="tab-content"><div class="sec-title">Installation / Uninstallation - Doorstep</div><div class="card"><h3>Chimney Installation - Doorstep</h3><div class="meta">★ 4.6 (67 reviews) • 1 hr 30 mins</div><ul class="feat"><li>Safe, secure chimney setup with ducting - 30-day service warranty</li></ul><button class="add" onclick="scrollToForm()" type="button">Book Now</button><div style="clear:both"></div></div></div>
-<div class="permanent-form" id="bookingForm"><h2>📋 Book Expert Technician - 30 Min Visit Doorstep</h2><p style="font-size:12px;color:#666;margin:6px 0 14px">✅ 90-Day Warranty • ⭐ 4.6 (335 reviews) • 📍 All South Delhi 90+ Areas • 🔧 All Brands</p><div class="form-group"><label for="pName">Your Name</label><input type="text" id="pName" placeholder="Enter your full name" autocomplete="name"></div><div class="form-group"><label for="pPhone">Mobile Number</label><input type="tel" id="pPhone" placeholder="Enter 10 digit mobile number" autocomplete="tel"></div><div class="form-group"><label for="pService">Service Needed</label><select id="pService"><option>Deep Chimney Service - 30 Min Visit</option><option>Basic Chimney Service - Expert</option><option>Chimney Check-up - Doorstep</option><option>Chimney Noise Repair - 30 Min</option><option>Chimney Not Working - Dead Repair</option><option>Chimney Motor Repair</option><option>Chimney Installation</option></select></div><div class="form-group"><label for="pArea">Area in South Delhi - All Areas (90+)</label><select id="pArea"><option>GK-1</option><option>GK-2</option><option>Lajpat Nagar</option><option>Saket</option><option>Vasant Kunj</option><option>Defence Colony</option><option>Malviya Nagar</option><option>Hauz Khas</option><option>Green Park</option><option>Greater Kailash</option><option>Kalkaji</option><option>CR Park</option><option>Panchsheel Park</option><option>Shahpur Jat</option></select></div><div class="form-group"><label for="pAddress">Full Address *</label><textarea id="pAddress" placeholder="House No, Street, Block, Area - Eg: C-123, CR Park, Near Market No 2" rows="3" required></textarea></div><button class="book-btn" onclick="submitBooking()" type="button">📲 Book Now - 30 Min Visit Doorstep →</button><a href="tel:8796284796" class="call-now-btn" aria-label="Call expert technician 8796284796">📞 Call Now - Expert Technician <span class="hide-num">8796284796</span></a><p id="hideSpamLine">🔒 No spam • Technician will call in 2 minutes • Free cancellation</p></div>
+<div class="permanent-form" id="bookingForm"><h2>📋 Book Expert Technician - 30 Min Visit Doorstep</h2><p style="font-size:12px;color:#666;margin:6px 0 14px">✅ 90-Day Warranty • ⭐ 4.6 (335 reviews) • 📍 All South Delhi 90+ Areas • 🔧 All Brands</p><div class="form-group"><label for="pName">Your Name</label><input type="text" id="pName" placeholder="Enter your full name"></div><div class="form-group"><label for="pPhone">Mobile Number</label><input type="tel" id="pPhone" placeholder="Enter 10 digit mobile number"></div><div class="form-group"><label for="pService">Service Needed</label><select id="pService"><option>Deep Chimney Service - 30 Min Visit</option><option>Basic Chimney Service - Expert</option><option>Chimney Check-up - Doorstep</option><option>Chimney Noise Repair - 30 Min</option><option>Chimney Not Working - Dead Repair</option><option>Chimney Motor Repair</option><option>Chimney Installation</option></select></div><div class="form-group"><label for="pArea">Area in South Delhi - All Areas (90+)</label><select id="pArea"><option>GK-1</option><option>GK-2</option><option>Lajpat Nagar</option><option>Saket</option><option>Vasant Kunj</option><option>Defence Colony</option><option>Malviya Nagar</option><option>Hauz Khas</option><option>Green Park</option><option>Greater Kailash</option><option>Kalkaji</option><option>CR Park</option><option>Panchsheel Park</option><option>Shahpur Jat</option></select></div><div class="form-group"><label for="pAddress">Full Address *</label><textarea id="pAddress" placeholder="House No, Street, Block, Area - Eg: C-123, CR Park, Near Market No 2" rows="3" required></textarea></div><button class="book-btn" onclick="submitBooking()" type="button">📲 Book Now - 30 Min Visit Doorstep →</button><a href="tel:8796284796" class="call-now-btn">📞 Call Now - Expert Technician <span class="hide-num">8796284796</span></a><p id="hideSpamLine">🔒 No spam • Technician will call in 2 minutes • Free cancellation</p></div>
 <div class="long-sec"><h2 id="deepTitle">Deep Cleaning - Expert Process</h2><p id="deepPara">Loading...</p></div>
 <div class="long-sec"><h2 id="noiseTitle">Chimney Noise - Fix at Home</h2><p id="noisePara">Loading...</p></div>
 <div class="long-sec"><h2 id="notworkTitle">Chimney Not Working - Dead Repair</h2><p id="notworkPara">Loading...</p></div>
@@ -100,11 +105,15 @@ body{background:#fff;color:#111;line-height:1.5}
 <div class="long-sec" id="terms"><h2>Terms & Conditions - Service Warranty</h2><p>90-day warranty on service, 30-day on installation. Warranty covers suction issue and cleaning only. Motor, PCB, touch panel are chargeable if parts needed. Service every 3-4 months recommended for Indian cooking. Payment after service completion. Free cancellation before technician dispatch. We are NOT authorized service center - we are independent third-party expert service with genuine parts. Call 8796284796 for same day 30 min visit in South Delhi.</p></div>
 <div class="footer">© 2026 CHIMNEY CARE • Independent Service Provider • South Delhi • Call <span class="hide-num">8796284796</span>
 <div class="footer-links"><a href="#privacy">Privacy Policy</a><a href="#terms">Terms & Conditions</a><a href="tel:8796284796">Contact: 8796284796</a></div>
-<div style="margin-top:6px">All Brands Service • 90+ Areas • 30 Min Visit • 90-Day Warranty</div>
+<div class="footer-pages" id="footerPages">
+<div class="footer-pages-title">🔧 All Brand & Area Pages</div>
+<div class="footer-pages-grid" id="footerPagesGrid"></div>
+</div>
+<div style="margin-top:12px">All Brands Service • 90+ Areas • 30 Min Visit • 90-Day Warranty</div>
 </div>
 </div>
-<div class="popup-overlay" id="callPopup"><div class="popup-box"><div class="popup-close" onclick="closePopup()" role="button" aria-label="Close popup">×</div><div style="font-size:36px" aria-hidden="true">📞</div><h3 style="font-size:18px;font-weight:800;margin-top:8px">Need Chimney Service?</h3><p style="font-size:13px;color:#555;margin:8px 0 14px">Expert will visit in <strong>30 Min - Doorstep</strong>. 4.6★ Rated - 335 Reviews!</p><a href="tel:8796284796" style="display:block;background:#111;color:#fff;padding:12px;border-radius:10px;text-decoration:none;font-weight:800">📞 Call Now - 30 Min Visit</a><a href="https://wa.me/918796284796" style="display:block;background:#22c55e;color:#fff;padding:12px;border-radius:10px;text-decoration:none;font-weight:800;margin-top:8px">💬 WhatsApp Us</a><div style="font-size:11px;color:#888;margin-top:10px;cursor:pointer" onclick="closePopup()">Continue Browsing →</div></div></div>
-<div class="sticky"><a href="tel:8796284796" class="call call-stable" aria-label="Call Now">📞 Call Now</a><a href="javascript:scrollToForm()" class="book-shake" aria-label="Book Now">📋 Book Now</a></div>
+<div class="popup-overlay" id="callPopup"><div class="popup-box"><div class="popup-close" onclick="closePopup()">×</div><div style="font-size:36px">📞</div><h3 style="font-size:18px;font-weight:800;margin-top:8px">Need Chimney Service?</h3><p style="font-size:13px;color:#555;margin:8px 0 14px">Expert will visit in <strong>30 Min - Doorstep</strong>. 4.6★ Rated - 335 Reviews!</p><a href="tel:8796284796" style="display:block;background:#111;color:#fff;padding:12px;border-radius:10px;text-decoration:none;font-weight:800">📞 Call Now - 30 Min Visit</a><a href="https://wa.me/918796284796" style="display:block;background:#22c55e;color:#fff;padding:12px;border-radius:10px;text-decoration:none;font-weight:800;margin-top:8px">💬 WhatsApp Us</a><div style="font-size:11px;color:#888;margin-top:10px;cursor:pointer" onclick="closePopup()">Continue Browsing →</div></div></div>
+<div class="sticky"><a href="tel:8796284796" class="call call-stable">📞 Call Now</a><a href="javascript:scrollToForm()" class="book-shake">📋 Book Now</a></div>
 <script>
 function switchTab(id,el){
   document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
@@ -199,7 +208,7 @@ function animateFallingHeading(el, text){
     let span = document.createElement('span');
     span.className = "fall-word";
     span.innerText = word;
-    span.style.animationDelay = `${i*0.08}s`;
+    span.style.animationDelay = `${i*0.12}s`;
     el.appendChild(span);
   });
 }
@@ -213,28 +222,29 @@ if(welcomeScreen && typeEl){
   function showWelcome(){
     typeEl.innerHTML="";
     let l1=document.createElement('div');
-    l1.style.color="#fff"; l1.style.fontSize="22px"; l1.style.fontWeight="600";
-    l1.style.opacity="0"; l1.style.animation="fadeIn 0.3s ease forwards";
+    l1.className="welcome-to";
+    l1.style.opacity="0"; l1.style.animation="fadeIn 0.6s ease 0.2s forwards";
     l1.innerText="Welcome to";
     typeEl.appendChild(l1);
     let words = isHomePage? ["Chimney","Service","Expert"] : [brand,"Chimney","Service","in",area,"Expert"];
     let l2=document.createElement('div');
-    l2.style.marginTop="8px"; l2.style.display="flex"; l2.style.flexWrap="wrap"; l2.style.justifyContent="center";
+    l2.style.marginTop="10px"; l2.style.display="flex"; l2.style.flexWrap="wrap"; l2.style.justifyContent="center";
     typeEl.appendChild(l2);
-    words.forEach((w,i)=>{
-      setTimeout(()=>{
-        let s=document.createElement('span');
-        s.className="welcome-fall";
-        s.innerText=w;
-        s.style.animationDelay=(i*0.08)+"s";
-        if(w==="in"){ s.style.color="#fff"; s.style.fontWeight="500"; }
-        if(w==="Expert"){ s.style.color="#fff"; s.style.width="100%"; s.style.display="block"; s.style.marginTop="6px"; }
-        l2.appendChild(s);
-      }, 150 + i*90);
-    });
     setTimeout(()=>{
-      welcomeScreen.style.transition='opacity 0.35s ease, transform 0.35s ease';
-      welcomeScreen.style.opacity='0'; welcomeScreen.style.transform='scale(1.05)';
+      words.forEach((w,i)=>{
+        setTimeout(()=>{
+          let s=document.createElement('span');
+          s.className="welcome-fall";
+          s.innerText=w;
+          if(w==="in"){ s.style.color="#fff"; s.style.fontWeight="500"; s.style.textShadow="none"; }
+          if(w==="Expert"){ s.style.color="#fff"; s.style.width="100%"; s.style.display="block"; s.style.marginTop="8px"; s.style.textShadow="none"; }
+          l2.appendChild(s);
+        }, i*180);
+      });
+    }, 800);
+    setTimeout(()=>{
+      welcomeScreen.style.transition='opacity 0.5s ease, transform 0.5s ease';
+      welcomeScreen.style.opacity='0'; welcomeScreen.style.transform='scale(1.08)';
       setTimeout(()=>{
         welcomeScreen.style.display='none';
         let secServiceEl = document.getElementById('secService');
@@ -242,8 +252,8 @@ if(welcomeScreen && typeEl){
           let headingText = isHomePage? "Chimney Service in South Delhi" : brand+" Chimney Service in "+area;
           animateFallingHeading(secServiceEl, headingText);
         }
-      },350);
-    }, 700 + words.length*90);
+      },500);
+    }, 800 + words.length*180 + 900);
   }
   showWelcome();
 }
@@ -300,9 +310,11 @@ let repT=document.getElementById('repairTitle');if(repT) repT.innerText= "Chimne
 let repC1=document.getElementById('repairCard1');if(repC1) repC1.innerText= "Chimney Check-up - Expert Technician";
 fill('deepPara',data.deep);fill('noisePara',data.noise);fill('notworkPara',data.notwork);fill('modelPara',data.models);
 let relatedBox=document.getElementById('relatedLinks');if(relatedBox){let allAreas=["cr-park","gk1","saket","defence-colony","vasant-kunj","lajpat-nagar","malviya-nagar","kalkaji","nehru-place","govindpuri"];let allBrands=["siemens","hafele","bosch","faber","kaff","elica","hindware"];let links=[];if(isHomePage){allBrands.forEach(b=>{links.push(`<a href="/${b}-chimney-service-in-cr-park/" title="${b} chimney service CR Park">${b.charAt(0).toUpperCase()+b.slice(1)} Service</a>`) });allAreas.forEach(a=>{if(links.length<6) links.push(`<a href="/bosch-chimney-service-in-${a}/" title="Chimney service ${a}">Chimney ${a.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</a>`) });}else{allBrands.forEach(b=>{if(b!=rawBrand) links.push(`<a href="/${b}-chimney-service-in-${rawArea}/" title="${b} service in ${area}">${b.charAt(0).toUpperCase()+b.slice(1)} ${area}</a>`) });allAreas.forEach(a=>{if(a!=rawArea && links.length<6) links.push(`<a href="/${rawBrand}-chimney-service-in-${a}/" title="${brand} service ${a}">${brand} ${a.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</a>`) });}relatedBox.innerHTML=links.slice(0,6).join('');}
+let footerGrid=document.getElementById('footerPagesGrid');if(footerGrid){let allAreasF=["cr-park","gk1","gk2","saket","defence-colony","vasant-kunj","lajpat-nagar","malviya-nagar","kalkaji","govindpuri","nehru-place","green-park"];let allBrandsF=["siemens","hafele","bosch","faber","kaff","elica","hindware"];let flinks=[];if(isHomePage){allBrandsF.forEach(b=>{allAreasF.slice(0,2).forEach(a=>{flinks.push(`<a href="/${b}-chimney-service-in-${a}/">${b.charAt(0).toUpperCase()+b.slice(1)} ${a.replace(/-/g,' ').toUpperCase()}<span>${a.replace(/-/g,' ')} • 30 Min</span></a>`);});});}else{allBrandsF.forEach(b=>{if(b!=rawBrand) flinks.push(`<a href="/${b}-chimney-service-in-${rawArea}/">${b.charAt(0).toUpperCase()+b.slice(1)} ${area}<span>${area} • Expert</span></a>`);});allAreasF.forEach(a=>{if(a!=rawArea) flinks.push(`<a href="/${rawBrand}-chimney-service-in-${a}/">${brand} ${a.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}<span>${a.replace(/-/g,' ')} • 30 Min</span></a>`);});}
+footerGrid.innerHTML=flinks.slice(0,12).join('');}
 let mapFrame=document.getElementById('mapFrame');if(mapFrame){if(isHomePage){mapFrame.src=`https://www.google.com/maps?q=South%20Delhi&z=12&output=embed`;} else {mapFrame.src=`https://www.google.com/maps?q=${encodeURIComponent(area+" "+landmark+" South Delhi")}&z=14&output=embed`;}}
 })();
-window.addEventListener('load',function(){if(!localStorage.getItem('popupShown')){setTimeout(()=>{let p=document.getElementById('callPopup');if(p) p.classList.add('show')},6000);}});
+window.addEventListener('load',function(){if(!localStorage.getItem('popupShown')){setTimeout(()=>{let p=document.getElementById('callPopup');if(p) p.classList.add('show')},7000);}});
 </script>
 </body>
 </html>
